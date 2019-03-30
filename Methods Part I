@@ -178,6 +178,9 @@ namespace Methods
                     case 6:
                         DisplaySineTable();
                         break;
+                    default:
+                        Console.WriteLine("Invalid selection");
+                        break;
                 }
             } while (option != 0);
         }
