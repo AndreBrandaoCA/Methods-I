@@ -1,0 +1,329 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MethodsIII
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int option = 0, course = 0, number = 0;
+            double cost = 0, com = 0, celsius = 0, fahrenheit = 0;
+            do
+            {
+                DisplayMenu();
+                Console.Write("Enter your choice->");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        #region Question 1 Tester
+                        Console.WriteLine($"The difference between 3 and 5 is {CalculateDifference(3, 5)}");
+                        Console.WriteLine($"The difference between 13 and 5 is {CalculateDifference(13, 5)}");
+                        Console.WriteLine($"The difference between 23 and 5 is {CalculateDifference(23, 5)}");
+                        Console.WriteLine($"The difference between 23 and 13 is {CalculateDifference(23, 13)}");
+                        #endregion
+                        break;
+                    case 2:
+                        #region Question 2 Tester
+                        Console.WriteLine($"{CalculatePower(5.8, 6.2)}");
+                        Console.WriteLine($"{CalculatePower(17.6, 3.18)}");
+                        #endregion
+                        break;
+                    case 3:
+                        #region Question 3 Tester
+                        course = 1;
+                        cost = 500;
+                        Console.WriteLine($"{course} course @{cost} will cost a total of {CalculateTuitionFee(course, cost):C}");
+                        course = 5;
+                        cost = 450;
+                        Console.WriteLine($"{course} course @{cost} will cost a total of {CalculateTuitionFee(course, cost):C}");
+                        course = 5;
+                        cost = 449.99;
+                        Console.WriteLine($"{course} course @{cost} will cost a total of {CalculateTuitionFee(course, cost):C}");
+                        course = 5;
+                        Console.WriteLine($"{course} course @no cost  will cost a total of {CalculateTuitionFee(course):C}");
+                        #endregion
+                        break;
+                    case 4:
+                        #region Question 4 Tester
+                        com = 900;
+                        Console.WriteLine($"A sale amount of {com:C} will yield a comission of {CalculateComission(com):C}");
+                        com = 1000;
+                        Console.WriteLine($"A sale amount of {com:C}  will yield a comission of {CalculateComission(com):C}");
+                        com = 2000;
+                        Console.WriteLine($"A sale amount of {com:C}  will yield a comission of {CalculateComission(com):C}");
+                        #endregion
+                        break;
+                    case 5:
+                        #region Question 5 Tester
+                        Console.WriteLine($"First call gives {Burguer():C}");
+                        #endregion
+                        break;
+                    case 6:
+                        #region Question 6 Tester
+                        double earth = 5.972e24;
+                        double moon = 7.348e22;
+                        double distance = 384400000;
+                        Console.WriteLine($"force: {CalculateGravitationalAttraction(earth, moon, distance):E2}");
+                        #endregion
+                        break;
+                    case 7:
+                        #region Question 7 Tester
+                        Console.WriteLine($"The area of the triangle is {HeronFormula(5.83, 4.24, 8.00):N}");
+                        #endregion
+                        break;
+                    case 8:
+                        #region Question 8 Tester
+                        double celsius1 = 0, celsius2 = 50, celsius3 = 100;
+                        Console.WriteLine($"C:{celsius1:N} F:{ConvertCelsiusToFahrenheit(celsius1):N}");
+                        Console.WriteLine($"C:{celsius2:N} F:{ConvertCelsiusToFahrenheit(celsius2):N}");
+                        Console.WriteLine($"C:{celsius3:N} F:{ConvertCelsiusToFahrenheit(celsius3):N}");
+                        #endregion
+                        break;
+                    case 9:
+                        #region Question 9 Tester
+                        fahrenheit = 0;
+                        Console.WriteLine($"F:{fahrenheit:N} C:{ConvertFahrenheitToCelsius(fahrenheit):N}");
+                        fahrenheit = 32;
+                        Console.WriteLine($"F:{fahrenheit:N} C:{ConvertFahrenheitToCelsius(fahrenheit):N}");
+                        fahrenheit = 212;
+                        Console.WriteLine($"F:{fahrenheit:N} C:{ConvertFahrenheitToCelsius(fahrenheit):N}");
+                        #endregion
+                        break;
+                    case 10:
+                        #region Question 10 Tester
+                        celsius = 0;
+                        Console.WriteLine($"C:{celsius:N} K:{ConvertCelsiusToKelvin(celsius):N}");
+                        celsius = 32;
+                        Console.WriteLine($"C:{celsius:N} K:{ConvertCelsiusToKelvin(celsius):N}");
+                        celsius = 212;
+                        Console.WriteLine($"C:{celsius:N} K:{ConvertCelsiusToKelvin(celsius):N}");
+                        #endregion
+
+                        break;
+                    case 11:
+                        #region Question 11 Tester
+                        fahrenheit = 0;
+                        Console.WriteLine($"F:{fahrenheit:N} K:{ConvertFahrenheitToKelvin(fahrenheit):N}");
+                        fahrenheit = 32;
+                        Console.WriteLine($"F:{fahrenheit:N} K:{ConvertFahrenheitToKelvin(fahrenheit):N}");
+                        fahrenheit = 212;
+                        Console.WriteLine($"F:{fahrenheit:N} K:{ConvertFahrenheitToKelvin(fahrenheit):N}");
+                        #endregion
+
+                        break;
+                    case 12:
+                        #region Question 12 Tester
+                        Console.Write("Please enter a number: ");
+                        number = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"The cube of the square of {number} is {Cube(Square(number))}");
+                        #endregion
+
+                        break;
+                    case 13:
+                        #region Question 13 Tester
+
+                        #endregion
+                        break;
+                    case 0:
+
+                        break;
+                    default:
+                        Console.WriteLine("Please select a valid option");
+                        break;
+                }
+            } while (option != 0);
+        }
+        #region Question 1
+        /* Write a method called CaculateDifference(int firstNumber, int secondNumber). 
+         * This method will calculate and return the difference between the two numbers i.e. 
+         * it will subtract the smaller one from the larger one and then return that value. 
+         * Call the CaculateDifference() method four times from your program Main() method supplying different arguments each time. 
+         * You must display the returned value for each call.*/
+        static int CalculateDifference(int firstNumber, int secondNumber)
+        {
+            int diff = Math.Abs(firstNumber - secondNumber);
+
+            return diff;
+        }
+
+        #endregion
+        #region Question 2
+        /* Write a method called CalculatePower(double current, double resistance). 
+         * The method will calculate and return the electrical power dissipated in a circuit. [P=I2R].
+         * Call the CalculatePower() method two times from your program Main() method supplying different arguments each time and displaying the returned value each time.*/
+        static double CalculatePower(double current, double resistance)
+        {
+            double powerDissipation = (current * current * resistance);
+
+            return powerDissipation;
+        }
+        #endregion
+        #region Question 3
+        /* Write a method called CaculateTuitionFee(int numberOfCourses, double costPerCourse = 449.99). 
+         * This method will calculate and return the required fees amount. 
+         * [Fees = number of courses * cost per course + 15.25]. 
+         * Call the CaculateTuitionFee() method four times from your program Main() method supplying different arguments each time*/
+        static double CalculateTuitionFee(int numberOfCourses, double costPerCourse = 449.99)
+        {
+            double totalFees = numberOfCourses * costPerCourse + 15.25;
+
+            return totalFees;
+        }
+        #endregion
+        #region Question 4
+        /* Write a method called CalculateCommission(double saleAmount). 
+         * This method will calculate and return a sales representation’s commission. [over $1000 the commission will be 1%].
+         * Call the CalculateCommission() method three times from your program Main() method, supplying arguments 900, 1000 and 2000.*/
+        static double CalculateComission(double saleAmount)
+        {
+            double comission = 0;
+            if (saleAmount > 1000)
+            {
+                comission = saleAmount * 0.01;
+            }
+            else
+            {
+                comission = 0;
+            }
+            return comission;
+        }
+        #endregion
+        #region Question 5
+        /* Write a method that does not take any argument. 
+         * The method will prompt the user for the number of burgers that he wants to buy. 
+         * The method will calculate and return the amount of money that will be required. [One burger cost $1.39]. 
+         * From your program Main() method, call the above method two times */
+        static double Burguer()
+        {
+            Console.Write("How many burguers? ");
+            double cost = (Convert.ToInt32(Console.ReadLine())) * 1.39;
+            return cost;
+        }
+        #endregion
+        #region Question 6
+        /*“Newton's law of universal gravitation states that every point mass in the universe attracts every other point mass 
+         * with a force that is directly proportional to the product of their masses and inversely proportional to the square 
+         * of the distance between them.” 
+         * Write a method called CalculateGravitationalAttraction() that takes three double arguments 
+         * (masses of the two bodies and the distance between them). 
+         * The method will calculate and return the force of attraction between them. 
+         * [F=G (m_1 m_2)/d^2  , where G = 6.673x10-11]. 
+         * In your main call this method with the masses of the earth, 
+         * moon and the distance between them and display the resulting force. 
+         * Mass of Earth = 5.972 × 1024, moon = 7.348 × 1022, Distance = 384,400000m. [Answer 1.99 x 1020N] */
+        static double CalculateGravitationalAttraction(double mass1, double mass2, double distance)
+        {
+            const double G = 6.673e-11;
+            double force = G * ((mass1 * mass2) / (distance * distance));
+            return force;
+        }
+        #endregion
+        #region Question 7
+        /*	Heron’s formula allows you to calculate the area of any triangle given the length of the three sides. 
+         *	Write a method that takes the length of the three sides and return the area of the specified triangle. 
+         *	A=√(s(s-a)(s-b)(s-c) ) where s=(a+b+c)/2. 
+         *	In your main call this method with arguments 5.83, 4.24 and 8.00, and display the area. [Answer = 12.0].*/
+        static double HeronFormula(double len1, double len2, double len3)
+        {
+            double s = (len1 + len2 + len3) / 2;
+            double area = Math.Sqrt(s * (s - len1) * (s - len2) * (s - len3));
+
+            return area;
+        }
+        #endregion
+        #region Question 8
+        /* Write a method called ConvertCelsiusToFahrenheit that takes a double argument.
+         * The method will calculate and return the Fahrenheit equivalent of the argument. [F = C * 9 / 5 + 32]. 
+         * In your main call this method three times with arguments 0, 50 and 100 respectively and display the results.*/
+        static double ConvertCelsiusToFahrenheit(double celsius)
+        {
+            double fahrenheit = celsius * (9 / 5) + 32;
+            return fahrenheit;
+        }
+        #endregion
+        #region Question 9
+        /* Write a method called ConvertFahrenheitToCelsius that takes a double argument. 
+         * The method will calculate and return the Celsius equivalent of the argument. [C = (F – 32) * 5 / 9]. 
+         * In your main call this method three times with arguments 0, 32 and 212 respectively and display the results.*/
+        static double ConvertFahrenheitToCelsius(double fahrenheit)
+        {
+            double celsius = ((fahrenheit - 32) * 5 / 9);
+            return celsius;
+        }
+        #endregion
+        #region Question 10
+        /* Write a method called ConvertCelsiusToKelvin that takes a double argument. 
+         * The method will calculate and return the Kelvin equivalent of the argument. [K = C + 273.15]. 
+         * In your main call this method three times with arguments -196, 0 and 100 respectively and display the results.*/
+        static double ConvertCelsiusToKelvin(double celsius)
+        {
+            double kelvin = celsius + 273.15;
+            return kelvin;
+        }
+        #endregion
+        #region Question 11
+        /* Write a method call ConvertFahrenheitToKelvin that takes a double argument. 
+         * The method will calculate and return the Kelvin equivalent of the argument. 
+         * [DO NOT RE-CODE THIS METHOD. Use the two previous methods to assist in your computation]. 
+         * In your main call this method three times and display the results*/
+        static double ConvertFahrenheitToKelvin(double fahrenheit)
+        {
+            double kelvin = ConvertCelsiusToKelvin(ConvertFahrenheitToCelsius(fahrenheit));
+            return kelvin;
+        }
+        #endregion
+        #region Question 12
+        /* Write two methods: Square(int) and Cube(int), these methods return the square and the cube of its argument. 
+         * In your main method prompt the user for an integer, then pass this integer to the Square method and then pass the results to the Cube method. 
+         * In the main method print out the final results.*/
+        static int Square(int number)
+        {
+            int square = number * number;
+            return square;
+        }
+        static double Cube(int number)
+        {
+            int cube = number * number * number;
+            return cube;
+        }
+        #endregion
+        #region Question 13
+        /*13.	Write two methods that will be called from main. 
+         * The first method should prompt the user for his daily sales amount. 
+         * The method should accept and return this amount. 
+         * The second method should calculate and return his commission based on the following: 
+         * 0-999 3%, 
+         * 1000-2999 4% and 
+         * over 3000 5%. 
+         * In your main call the two methods and display the results in a readable manner.*/
+
+        #endregion
+        #region Menu
+        static void DisplayMenu()
+        {
+            Console.WriteLine("\n   Part III(question 3 - 11)");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("1) CalculateDifference");
+            Console.WriteLine("2) CalculatePower");
+            Console.WriteLine("3) CalculateTuitionFee");
+            Console.WriteLine("4) CalculateCommission");
+            Console.WriteLine("5) GetBurgerCost");
+            Console.WriteLine("6) CalculateGravitationalForce");
+            Console.WriteLine("7) HeronFormula");
+            Console.WriteLine("8) ConvertCelsiusToFahrenheit");
+            Console.WriteLine("9) ConvertFahrenheitToCelsius");
+            Console.WriteLine("10) ConvertCelsiusToKelvin");
+            Console.WriteLine("11) ConvertFahrenheitToCelsius");
+            Console.WriteLine("12) Square of Cube");
+            Console.WriteLine("");
+            Console.WriteLine("0) To terminate the program");
+
+            #endregion
+        }
+    }
+}
