@@ -11,20 +11,9 @@ namespace MethodsII
         static void Main(string[] args)
         {
             int option = 0;
-            Console.WriteLine("   Part   II (question 1 - 8)");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine("1) Display Horizontal Stars");
-            Console.WriteLine("2) Display Vertical Stars");
-            Console.WriteLine("3) Calculate and Display Volume");
-            Console.WriteLine("4) Calculate and Display Tax");
-            Console.WriteLine("5) Celsius Farenheit Table");
-            Console.WriteLine("6) Km To Miles Table");
-            Console.WriteLine("7) Display Sine Table");
-            Console.WriteLine("8) Height Conversion");
-            Console.WriteLine("0) Exit");
-            Console.WriteLine("");
             do
             {
+                DisplayMenu();
                 Console.Write("Enter your choice->");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -206,11 +195,23 @@ namespace MethodsII
         */
         static void ConvertCmToM(double heightInCm)
         {
-            
             Console.WriteLine($"{heightInCm}cm    {(heightInCm/100):F2}m");
-            
         }
-
         #endregion
+        static void DisplayMenu()
+        {
+            Console.WriteLine("\n   Part   II (question 1 - 8)");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("1) Display Horizontal Stars");
+            Console.WriteLine("2) Display Vertical Stars");
+            Console.WriteLine("3) Calculate and Display Volume");
+            Console.WriteLine("4) Calculate and Display Tax");
+            Console.WriteLine("5) Celsius Farenheit Table");
+            Console.WriteLine("6) Km To Miles Table");
+            Console.WriteLine("7) Display Sine Table");
+            Console.WriteLine("8) Height Conversion");
+            Console.WriteLine("0) Exit");
+            Console.WriteLine("");
+        }
     }
 }
